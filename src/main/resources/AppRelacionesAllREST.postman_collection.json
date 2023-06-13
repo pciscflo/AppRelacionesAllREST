@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"Pepe\",\r\n    \"address\" : {\r\n        \"street\" : \"Lima\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"name\" : \"Juan\",\r\n    \"address\" : {\r\n        \"street\" : \"Piura\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -61,7 +61,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Jaimito\",\r\n    \"car\" : {\r\n        \"model\": \"Yaris\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"name\": \"Pepito\",\r\n    \"car\" : {\r\n        \"model\": \"Celica\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -130,7 +130,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Jorge\",\r\n    \"students\": [\r\n        {\r\n            \"indexNumber\": 7777\r\n        },\r\n        {\r\n            \"indexNumber\":8888\r\n        }\r\n\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"UPC\",\r\n    \"students\": [\r\n        {\r\n            \"indexNumber\": 1111\r\n        },\r\n        {\r\n            \"indexNumber\":2222\r\n        }\r\n\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -159,7 +159,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Cart1\",\r\n    \"items\" : [\r\n        {\r\n           \"serialNumber\": \"55555\"\r\n        },\r\n        {\r\n            \"serialNumber\": \"66666\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Cart002\",\r\n    \"items\" : [\r\n        {\r\n           \"serialNumber\": \"3333\"\r\n        },\r\n        {\r\n            \"serialNumber\": \"4455\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -186,7 +186,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/cart/1",
+					"raw": "http://localhost:8080/api/cart/7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -195,7 +195,7 @@
 					"path": [
 						"api",
 						"cart",
-						"1"
+						"7"
 					]
 				}
 			},
@@ -216,6 +216,56 @@
 					"path": [
 						"api",
 						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Estudiantes por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"students",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ManyToMany Save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nickname\": \"Chanchito\"   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/viewwer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"viewwer"
 					]
 				}
 			},
