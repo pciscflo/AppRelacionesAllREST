@@ -10,4 +10,6 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT u.students FROM University u where u.id =:id")
     List<Student> findStudents(Long id);
+    @Query("SELECT s FROM University u JOIN u.students s")//inner join
+    List<Student> findStudentsU(Long id);
 }

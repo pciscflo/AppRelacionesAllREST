@@ -14,12 +14,13 @@ public class Viewer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nickname;
-    @ManyToMany(fetch = FetchType.LAZY)//LAZZY en session
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)//LAZZY en session @Transactional
     @JoinTable(
             name = "followed_streams",
             joinColumns = @JoinColumn(name = "viewer_id"),
             inverseJoinColumns = @JoinColumn(name = "stream_id")
     )
+    //Columna followedStream propietaria
     private List<Stream> followedStreams = new ArrayList<>();
 
     public Viewer(String nickname) {
@@ -30,9 +31,27 @@ public class Viewer {
 
     }
 
-    public void followStream(Stream stream){
-        followedStreams.add(stream);
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public List<Stream> getFollowedStreams() {
+        return followedStreams;
+    }
+
+    public void setFollowedStreams(List<Stream> followedStreams) {
+        this.followedStreams = followedStreams;
+    }
 }

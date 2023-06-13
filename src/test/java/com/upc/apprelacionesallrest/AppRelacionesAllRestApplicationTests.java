@@ -10,6 +10,7 @@ import com.upc.apprelacionesallrest.model.oneToOne.bidirectional.Car;
 import com.upc.apprelacionesallrest.model.oneToOne.bidirectional.Owner;
 import com.upc.apprelacionesallrest.model.oneToOne.unidirectional.Address;
 import com.upc.apprelacionesallrest.model.oneToOne.unidirectional.User;
+import com.upc.apprelacionesallrest.negocio.Negocio;
 import com.upc.apprelacionesallrest.repository.manyToMany.StreamRepository;
 import com.upc.apprelacionesallrest.repository.manyToMany.ViewerRepository;
 import com.upc.apprelacionesallrest.repository.oneToMany.bidirectional.CartRepository;
@@ -23,7 +24,9 @@ import com.upc.apprelacionesallrest.repository.oneToOne.unidirectional.UserRepos
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -51,6 +54,8 @@ class AppRelacionesAllRestApplicationTests {
 	private StreamRepository streamRepository;
 	@Autowired
 	private ViewerRepository viewerRepository;
+	@Autowired
+	private  Negocio negocio;
 	@Test
 	void contextLoads() {
 	}
@@ -148,11 +153,24 @@ class AppRelacionesAllRestApplicationTests {
 
 		streamRepository.saveAll(streams);
 
-		johnViewer.followStream(cookingStream);
-		willViewer.followStream(gamingStream);
-		samViewer.followStream(gamingStream);
+		johnViewer.getFollowedStreams().add(cookingStream);
+		willViewer.getFollowedStreams().add(gamingStream);
+		samViewer.getFollowedStreams().add(gamingStream);
 
 		viewerRepository.saveAll(viewers);
+	}
+	//@Test
+	public void testInsertManyToMany(){
+		Viewer anaViewer = new Viewer("Ana");
+		Stream nataciolStream = new Stream("Natacion Free");
+        anaViewer.getFollowedStreams().add(nataciolStream);
+		viewerRepository.save(anaViewer);
+	}
+	@Test
+	public void testInsertManyToManyExist(){
+     //1L, 3L deben existir, sólo funciona en negocio por @Transaction
+		negocio.grabarTablaIntermediaManytoMany(1L,2L);
+
 	}
 	//@Test
 	public void testBidManyToMany(){

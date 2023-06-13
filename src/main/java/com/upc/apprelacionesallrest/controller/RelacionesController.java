@@ -1,5 +1,7 @@
 package com.upc.apprelacionesallrest.controller;
 
+import com.upc.apprelacionesallrest.model.manyToMany.Stream;
+import com.upc.apprelacionesallrest.model.manyToMany.Viewer;
 import com.upc.apprelacionesallrest.model.oneToMany.bidirectional.Cart;
 import com.upc.apprelacionesallrest.model.oneToMany.unidirectional.Student;
 import com.upc.apprelacionesallrest.model.oneToMany.unidirectional.University;
@@ -94,5 +96,10 @@ public class RelacionesController {
     @GetMapping("/students/{id}")
     public List<Student> listStudents(@PathVariable("id") Long id){
         return studentRepository.findStudents(id);
+    }
+    @PostMapping("/viewwer")
+    public void registrarViewer(@RequestBody Viewer viewer){
+        System.out.println("Ok");
+        negocio.registrarViewer(viewer);
     }
 }
